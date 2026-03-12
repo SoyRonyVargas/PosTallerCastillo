@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Inter cargado desde index.html */
+
+/* ── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background-color: #f3f4f6; }
+::-webkit-scrollbar-thumb { background-color: #d1d5db; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background-color: #9ca3af; }
+
+/* ── Componentes reutilizables ─────────────────────── */
+@layer components {
+
+  /* Tabla */
+  .table-base { @apply w-full text-sm text-left border-collapse; }
+  .table-base thead tr { @apply bg-gray-100 text-gray-500 uppercase text-xs tracking-wider; }
+  .table-base thead th { @apply px-4 py-3 font-semibold whitespace-nowrap; }
+  .table-base tbody tr { @apply border-b border-gray-100 hover:bg-gray-50 transition-colors duration-100; }
+  .table-base tbody td { @apply px-4 py-3 text-gray-700; }
+
+  /* Card */
+  .card { @apply bg-white rounded-xl border border-gray-200 shadow-sm; }
+
+  /* Botones */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg
+           font-medium text-sm transition-colors duration-150 focus:outline-none
+           focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary  { @apply btn bg-blue-600  text-white hover:bg-blue-700  focus:ring-blue-500; }
+  .btn-secondary{ @apply btn bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-gray-300; }
+  .btn-danger   { @apply btn bg-red-600   text-white hover:bg-red-700   focus:ring-red-500; }
+  .btn-success  { @apply btn bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500; }
+  .btn-warning  { @apply btn bg-amber-500  text-white hover:bg-amber-600  focus:ring-amber-400; }
+  .btn-sm       { @apply px-3 py-1.5 text-xs; }
+  .btn-lg       { @apply px-6 py-3 text-base; }
+
+  /* Inputs */
+  .input {
+    @apply w-full px-3 py-2 rounded-lg border border-gray-300 text-sm text-gray-900
+           bg-white placeholder-gray-400 focus:outline-none focus:ring-2
+           focus:ring-blue-500 focus:border-transparent transition duration-150;
+  }
+  .input-error  { @apply border-red-400 focus:ring-red-400; }
+  .label        { @apply block text-sm font-medium text-gray-700 mb-1; }
+
+  /* Badges */
+  .badge        { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold; }
+  .badge-green  { @apply badge bg-green-100  text-green-700; }
+  .badge-red    { @apply badge bg-red-100    text-red-700; }
+  .badge-blue   { @apply badge bg-blue-100   text-blue-700; }
+  .badge-yellow { @apply badge bg-yellow-100 text-yellow-700; }
+  .badge-gray   { @apply badge bg-gray-100   text-gray-600; }
+  .badge-purple { @apply badge bg-purple-100 text-purple-700; }
+
+  /* Sidebar nav link */
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
+           text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors duration-100 cursor-pointer;
+  }
+  .nav-link-active {
+    @apply bg-blue-50 text-blue-700 hover:bg-blue-50 hover:text-blue-700;
+  }
+}
+
+/* ── Impresión (Ticket) ────────────────────────────── */
+@media print {
+  body    { background: white !important; }
+  .no-print { display: none !important; }
+  .ticket-print-wrapper {
+    width: 80mm;
+    margin: 0 auto;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+  }
+}
